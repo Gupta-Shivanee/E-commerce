@@ -1,0 +1,17 @@
+<h1>Sign Up</h1>
+<%@user = User.new%>
+<%= form_for @user do |f|%>
+  <%= f.label :username%><br>
+  <%= f.text_field :full_name%><br>
+  <%= f.label :email%><br>
+  <%= f.text_field :email%><br>
+  <%= f.label :password%><br>
+  <%= f.password_field :password%><br>
+  <%= f.label :gender%><br>
+  <%= f.radio_button :gender, "male" %>Male<br>
+  <%= f.radio_button :gender, "female" %>Female<br>
+  <%= f.radio_button :gender, "other" %>Other<br>
+  <%= f.label :mobile_no%><br>
+  <%= f.telephone_field :mobile_no, placeholder: 'Length should be 10'%><br>
+  <%= submit_tag "Sign Up"%>
+<%end%>
