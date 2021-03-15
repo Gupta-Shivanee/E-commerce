@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: %i[new create]
   
   def new
     @user = User.new
@@ -9,14 +9,12 @@ class UsersController < ApplicationController
     @user = User.create(signup_params)
     session[:user_id] = @user.id
     if @user.save
-      redirect_to user_path(user.id)
+      redirect_to user_path(@user.id)
     else
       flash[:notice] = "Unsuccessful Sign up!"
-      redirect_to root_url
+      redirect_to root_path
     end
   end
-  
-  def show; end
   
   private
   def signup_params
