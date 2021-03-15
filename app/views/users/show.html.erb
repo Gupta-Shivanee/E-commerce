@@ -1,0 +1,6 @@
+<h1>Hello</h1>
+<% if current_user %>
+  <%= "Logged in as #{current_user.email}" %> | <%= link_to 'Logout', logout_path(current_user.id), method: :delete %> 
+<% else %>
+  <%= link_to 'Home', root_path %>
+<% end %>
