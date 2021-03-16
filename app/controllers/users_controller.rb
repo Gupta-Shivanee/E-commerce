@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(signup_params)
-    session[:user_id] = @user.id
+    @user = User.new(signup_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
       flash[:notice] = "Unsuccessful Sign up!"
