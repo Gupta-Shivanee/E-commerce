@@ -11,8 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
-      flash[:notice] = "Unsuccessful Sign up!"
-      redirect_to root_path
+        render :new
     end
   end
   

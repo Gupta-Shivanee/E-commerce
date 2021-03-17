@@ -1,8 +1,10 @@
+<div class=containers>
 <h1>Login</h1>
-<%= form_tag sessions_path do %>
-  <%= label_tag :email %>
-  <%= email_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
+<%= form_tag sessions_path do %><br>
+  <%= label_tag :email %> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <%= email_field_tag :email %><br>
+  <%= label_tag :password %> &nbsp
+  <%= password_field_tag :password %><br>
+  <br><%= submit_tag "Login", class: 'btn btn-primary btn-sm' %>
 <% end %>
+</div>

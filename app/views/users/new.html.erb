@@ -1,17 +1,20 @@
+<%= render"layouts/error_messages" %>
+<div class = containers>
 <h1>Sign Up</h1>
-<% @user = User.new %>
 <%= form_for @user do |f| %>
-  <%= f.label :username %><br>
+  <%= f.label :username %>&nbsp
   <%= f.text_field :full_name %><br>
-  <%= f.label :email %><br>
+  <%= f.label :email %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
   <%= f.email_field :email %><br>
-  <%= f.label :password %><br>
+  <%= f.label :password %>&nbsp&nbsp
   <%= f.password_field :password %><br>
-  <%= f.label :gender %><br>
-  <%= f.radio_button :gender, "male" %>Male<br>
-  <%= f.radio_button :gender, "female" %>Female<br>
-  <%= f.radio_button :gender, "other" %>Other<br>
-  <%= f.label :mobile_no %><br>
+  <%= f.label :gender %>&nbsp&nbsp&nbsp&nbsp&nbsp
+  <%= f.radio_button :gender, "male" %>Male&nbsp&nbsp&nbsp
+  <%= f.radio_button :gender, "female" %>Female&nbsp&nbsp&nbsp
+  <%= f.radio_button :gender, "other" %>Other&nbsp&nbsp&nbsp&nbsp&nbsp
+  <br>
+  <%= f.label :mobile_no %>&nbsp&nbsp
   <%= f.telephone_field :mobile_no, placeholder: 'Length should be 10' %><br>
-  <%= submit_tag "Sign Up" %>
+  <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
 <% end %>
+</div>
