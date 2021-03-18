@@ -1,20 +1,40 @@
-<%= render"layouts/error_messages" %>
+<%= render"shared/error_messages" %>
 <div class = containers>
 <h1>Sign Up</h1>
-<%= form_for @user do |f| %>
-  <%= f.label :username %>&nbsp
-  <%= f.text_field :full_name %><br>
-  <%= f.label :email %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <%= f.email_field :email %><br>
-  <%= f.label :password %>&nbsp&nbsp
-  <%= f.password_field :password %><br>
-  <%= f.label :gender %>&nbsp&nbsp&nbsp&nbsp&nbsp
-  <%= f.radio_button :gender, "male" %>Male&nbsp&nbsp&nbsp
-  <%= f.radio_button :gender, "female" %>Female&nbsp&nbsp&nbsp
-  <%= f.radio_button :gender, "other" %>Other&nbsp&nbsp&nbsp&nbsp&nbsp
-  <br>
-  <%= f.label :mobile_no %>&nbsp&nbsp
-  <%= f.telephone_field :mobile_no, placeholder: 'Length should be 10' %><br>
+<%= form_for @user, html: {class: 'form-horizontal center'} do |f| %>
+  <div class = 'form-group row'>
+    <%= f.label :username, class: 'col-md-3' %>
+    <div class = 'col-md-9'>
+      <%= f.text_field :full_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class = 'form-group row'>
+    <%= f.label :email, class: 'col-md-3' %>
+    <div class = 'col-md-9'>
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+  </div>
+  <div class = 'form-group row'>
+    <%= f.label :password, class: 'col-md-3' %>
+    <div class = 'col-md-9'>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+  </div>
+  <div class = 'form-group row'>
+    <%= f.label :gender, class: 'col-md-3' %>
+    <div class = 'col-md-9'>
+      <%= f.radio_button :gender, "male", class: 'form-control', class: 'col-md-1' %>Male
+      <%= f.radio_button :gender, "female", class: 'form-control', class: 'col-md-1' %>Female
+      <%= f.radio_button :gender, "other", class: 'form-control', class: 'col-md-1' %>Other
+    </div>
+  </div>
+  <div class = 'form-group row'>
+    <%= f.label :mobile_no, class: 'col-md-3' %>
+    <div class = 'col-md-9'>
+      <%= f.telephone_field :mobile_no, placeholder: 'Length should be 10', class: 'form-control' %>
+    </div>
+  </div>
   <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
 <% end %>
 </div>
+

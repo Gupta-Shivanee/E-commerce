@@ -1,6 +1,9 @@
 <div class = containers>
-<h1>Welcome</h1></br>
-
-<%= button_to "Login", new_session_path, method: :get %></br>
+<h1>Welcome</h1>
+<div class = 'col-sm'>
+<%= button_to "Login", new_session_path, method: :get %>
+</div>
+<div class = 'col-sm mt-4'>
 <%= button_to "Sign Up", new_user_path, method: :get %>
+</div>
 </div>

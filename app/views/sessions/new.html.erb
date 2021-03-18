@@ -1,10 +1,22 @@
-<div class=containers>
+<div class = containers>
 <h1>Login</h1>
-<%= form_tag sessions_path do %><br>
-  <%= label_tag :email %> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <%= email_field_tag :email %><br>
-  <%= label_tag :password %> &nbsp
-  <%= password_field_tag :password %><br>
-  <br><%= submit_tag "Login", class: 'btn btn-primary btn-sm' %>
+<%= form_tag sessions_path do %>
+  <div class = 'form-group row'>
+    <div class = 'col-md-3'>
+      <%= label_tag :email %> 
+    </div>
+    <div class = 'col-md-9'>
+      <%= email_field_tag :email %>
+    </div>
+  </div>
+  <div class = 'form-group row'>
+    <div class = 'col-md-3'>
+      <%= label_tag :password %> 
+    </div>
+    <div class = 'col-md-9'>
+      <%= password_field_tag :password %>
+    </div>
+  </div>
+  <%= submit_tag "Login", class: 'btn btn-primary btn-sm' %>
 <% end %>
 </div>

@@ -5,7 +5,6 @@
     <title><%= content_for?(:title) ? yield(:title) : "E-commerce" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
@@ -13,14 +12,11 @@
 
   <body>
     <header>
-      <div class="container">
+      <div class = "container">
         <%= "E-Commerce" %>
       </div>
     </header>
-    <main role="main">
-    <%= content_for?(:content) ? yield(:content) : yield %>
-    </main>
-    
+    <%= yield %>
     <% flash.each do |type, message| %>
       <%= message %>
     <% end %>
