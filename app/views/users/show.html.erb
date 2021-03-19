@@ -6,8 +6,8 @@
     <%= "You are now logged in" %>
   </div>
   <div class = "mb-2">
-  <%= "Email:- #{current_user.email}" %>
+    <%= "Email:- #{current_user.email}" %>
   </div>
   <%= "Contact No:- #{current_user.mobile_no}" %>
   <%= button_to 'Logout', session_path(current_user.id), method: :delete %> 
-
+<% end %>
