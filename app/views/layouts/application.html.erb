@@ -2,12 +2,14 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><%= "E-commerce" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "E-commerce" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
   </head>
+
   <body>
     <header>
       <div class = "container">
@@ -18,5 +20,8 @@
       <%= message %>
     <% end %>
     <%= yield %>
+    <% flash.each do |type, message| %>
+      <%= message %>
+    <% end %>
   </body>
 </html>
