@@ -1,24 +1,49 @@
-# README
+Application name:- E-Commmerce Website
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Heroku link:- https://vast-atoll-85851.herokuapp.com/
 
-Things you may want to cover:
+##### Prerequisites
 
-* Ruby version
+The setups steps expect following tools installed on the system.
 
-* System dependencies
+ Github
+ Ruby [3.0.0]
+ Rails [6.1.3]
+ postgresql [12.6]
 
-* Configuration
+##### 1. Check out the repository
 
-* Database creation
+```bash
+git clone git@github.com:Gupta-Shivanee/E-commerce.git
+```
 
-* Database initialization
+##### 2. Install Dependecies
 
-* How to run the test suite
+Using Bundler and Yarn:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+bundle && yarn
+```
 
-* Deployment instructions
+##### 3. Create and setup the database
 
-* ...
+Run the following commands to create and setup the database.
+
+```ruby
+rails db:create
+rails db:setup
+```
+
+##### 4. Start the Rails server
+
+You can start the rails server using the command given below.
+
+```ruby
+rails s
+```
+
+##### 5. Deploy on heroku
+
+```bash
+git push heroku master
+```
