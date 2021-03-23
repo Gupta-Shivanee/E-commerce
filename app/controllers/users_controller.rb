@@ -11,16 +11,16 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
-        render :new
+      render :new
     end
   end
   
   def edit
-    @user = User.find_by_id(session[:user_id])
+    @user = get_user
   end
   
   def update
-    @user = User.find_by_id(session[:user_id])
+    @user = get_user
     if @user.update(user_update_params)
       flash[:notice] = "profile updated"
       redirect_to user_path(@user.id)
@@ -35,6 +35,10 @@ class UsersController < ApplicationController
   end
   
   def user_update_params
-    params.require(:user).permit(:full_name,:password, :mobile_no)
+    params.require(:user).permit(:full_name, :password, :mobile_no)
+  end
+  
+  def get_user
+    User.find_by_id(session[:user_id])
   end
 end
