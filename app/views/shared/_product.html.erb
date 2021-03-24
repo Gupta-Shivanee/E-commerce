@@ -1,0 +1,15 @@
+<% @products.each do |product| %>
+  <div class = "mb-3">
+    <% product.image.each do |image| %>
+      <%= image_tag image, height: 200, width: 200, class: "mt-2 ml-4" %>
+      <% break %>
+    <% end %>
+  </div>
+  <div class = "mb-3">
+    <%= "Product:- #{product.name}" %>
+  </div>
+  <div class = "mb-3">
+    <%= "Price:- #{product.price}" %>
+  </div>
+  <%= link_to 'View Product', product_path(product) %><hr> 
+<% end %>
