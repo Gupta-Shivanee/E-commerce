@@ -15,8 +15,26 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    @user = current_user
+  end
+  
+  def update
+    @user = current_user
+    if @user.update(user_update_params)
+      flash[:notice] = "profile updated"
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
+  end
+  
   private
   def signup_params
     params.require(:user).permit(:full_name, :email, :password, :gender, :mobile_no)
+  end
+  
+  def user_update_params
+    params.require(:user).permit(:full_name, :password, :mobile_no)
   end
 end

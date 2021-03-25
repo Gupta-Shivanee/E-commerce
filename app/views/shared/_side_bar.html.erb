@@ -1,0 +1,13 @@
+<nav id = "sidebar">
+  <% if logged_in? %>
+    <div class = "col-md-6">
+      <ul class = "nav nav-sidebar mt-2 ml-2">
+        <% if current_user.present? %>
+          <li class = "sidebar mt-2 mb-4"><%= link_to "View_Profile", user_path %></li>
+          <li class = "sidebar mb-4"><%= link_to "Update_Profile", edit_user_path %></li>
+          <li class = "mb-4"><%= link_to 'Logout', session_path(current_user.id), method: :delete %></li> 
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</nav>
