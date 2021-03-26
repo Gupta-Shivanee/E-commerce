@@ -31,10 +31,10 @@ class UsersController < ApplicationController
   
   private
   def signup_params
-    params.require(:user).permit(:full_name, :email, :password, :gender, :mobile_no)
+    params.require(:user).permit(:full_name, :email, :password, :gender, :mobile_no, :image)
   end
   
   def user_update_params
-    params.require(:user).permit(:full_name, :password, :mobile_no)
+    params.require(:user).permit(:full_name, :password, :image, :mobile_no)
   end
 end

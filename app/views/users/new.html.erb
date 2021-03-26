@@ -34,6 +34,15 @@
       <%= f.telephone_field :mobile_no, placeholder: 'Length should be 10', class: 'form-control' %>
     </div>
   </div>
+  <div class = 'form-group row'>
+    <% if @user.image.attached? %>
+      <%= image_tag @user.image %>
+    <% end %>
+    <%= f.label :image, class: 'col-md-3' %>
+    <div class = 'col-md-9'>
+      <%= f.file_field :image, class: 'form-control' %>
+    </div>
+  </div>
   <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
 <% end %>
 </div>
