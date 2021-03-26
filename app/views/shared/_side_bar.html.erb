@@ -12,6 +12,8 @@
           <li class = "sidebar mb-4"><%= link_to "Update_Profile", edit_user_path %></li>
           <li class = "sidebar mb-4"><%= link_to "Add_Product", new_product_path %></li>
           <li class = "sidebar mb-4"><%= link_to "View_Product", products_path %></li>
+          <li class = "sidebar mb-4"><%= link_to "Add_Address", new_address_path %></li>
+          <li class = "sidebar mb-4"><%= link_to "View_Address", address_path %></li>
           <li class = "mb-4"><%= link_to 'Logout', session_path(current_user.id), method: :delete %></li> 
         <% end %>
       </ul>

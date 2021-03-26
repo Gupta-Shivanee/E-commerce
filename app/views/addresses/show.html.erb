@@ -1,0 +1,11 @@
+<% @address.each do |address| %>
+  <div class = "mb-3">
+    <%= "Address:- #{address.house_no}, #{address.street}, #{address.city}" %>
+  </div>
+  <div class = "mb-3">
+    <%= "#{address.state}, #{address.country}" %>
+  </div>
+  <div class = "mb-3">
+    <%= "pin-code #{address.pincode} " %>
+  </div><hr>
+<% end %>

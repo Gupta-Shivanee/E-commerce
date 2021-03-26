@@ -1,0 +1,18 @@
+<h2>Cart show</h2>
+<ul>
+  <% @cart.cart_items.each do |cart_item| %>
+    <li>Item: <%= cart_item.product.name %>/ Price: <%= cart_item.product.price %>/ Quantity: <%= cart_item.quantity %>/ Total Price: <%= cart_item.total_price %>
+    <ul>
+      <li>
+        <%= link_to "Add one", cart_item_add_path(:id => cart_item), method: :post %>
+        <%= link_to "Reduce one", cart_item_reduce_path(:id => cart_item), method: :post %>
+      </li>
+      <li>
+        <%= link_to "Remove item", cart_item_path(cart_item), method: :delete %>
+      </li>
+    </ul>
+    
+  <% end %>
+</ul>
+<h3>Sub total: <%= @cart.sub_total %> Rs.</h3>
+<%= link_to "Empty cart", cart_path(@current_cart), method: :delete, data: {confirm: "Are you sure?"} %>
