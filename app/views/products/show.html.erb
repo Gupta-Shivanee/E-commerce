@@ -1,0 +1,18 @@
+<%= "Welcome #{current_user.full_name}" %>
+<div class = "mb-3">
+  <%= "Product:- " %>
+  <%= @product.name %>
+</div>
+<div class = "mb-3">
+  <%= "Price:-" %>
+  <%= @product.price %>
+</div>
+<div class = "mb-3">
+  <%= "Description:- " %>
+  <%= @product.description %>
+</div>
+<% if @product.image.present? %>
+  <% @product.image.each do |image| %>
+    <%= image_tag image, height: 200, width: 200, class: "mt-2 ml-4" %>
+  <% end %>
+<% end %>
