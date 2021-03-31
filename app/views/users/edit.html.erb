@@ -1,12 +1,12 @@
-<%= render"shared/error_messages" %>
+<%= render "shared/error_messages" %>
 <div class = "row">
   <div class = "column">
-    <%= render"shared/side_bar"%>
+    <%= render "shared/side_bar" %>
   </div>
   <div class = "column">
     <div class = containers>
       <h1>Update User Profile</h1>
-      <%= form_for @user, html: {class: 'form-horizontal center'} do |f| %>
+      <%= form_for @user, html: { class: 'form-horizontal center' } do |f| %>
         <div class = 'form-group row'>
           <%= f.label :username, class: 'col-md-3' %>
           <div class = 'col-md-9'>
@@ -28,7 +28,7 @@
       <div class = 'form-group row'>
         <%= f.label :image, class: 'col-md-3' %>
           <% if @user.image.attached? %>
-            <%= image_tag @user.image, style: "width: 100px; display:block" %>
+            <%= image_tag @user.image, height: 100, width:100, class: "rounded-circle mt-2 ml-4" %>
           <% end %>
         <div class = 'col-md-9 ml-5 mt-2'>
           <%= f.file_field :image, class: 'form-control' %>
