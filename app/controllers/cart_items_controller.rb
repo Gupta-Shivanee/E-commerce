@@ -4,10 +4,10 @@ class CartItemsController < ApplicationController
     current_cart = @current_cart
     if current_cart.products.include?(chosen_product)
       @cart_item = current_cart.cart_items.find_by(product_id: chosen_product)
-      @cart_item.quantity = 0
       @cart_item.quantity += 1
     else
       @cart_item = CartItem.new
+      @cart_item.quantity = 1
       @cart_item.cart = current_cart
       @cart_item.product = chosen_product
     end

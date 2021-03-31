@@ -28,7 +28,7 @@
       <div class = 'form-group row'>
         <%= f.label :image, class: 'col-md-3' %>
           <% if @user.image.attached? %>
-            <%= image_tag @user.image, style: "width: 100px; display:block" %>
+            <%= image_tag @user.image, height: 200, width: 200, class: "mt-2 ml-4" %>
           <% end %>
         <div class = 'col-md-9 ml-5 mt-2'>
           <%= f.file_field :image, class: 'form-control' %>
