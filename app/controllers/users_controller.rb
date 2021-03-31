@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(signup_params)
     if @user.save
+      UserMailer.welcome_email(@user).deliver_now
       session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_update_params)
+      UserMailer.update_email(@user).deliver_now
       flash[:notice] = "profile updated"
       redirect_to user_path(@user.id)
     else
