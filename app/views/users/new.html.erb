@@ -1,48 +1,48 @@
-<%= render"shared/error_messages" %>
+<%= render "shared/error_messages" %>
 <div class = containers>
-<h1>Sign Up</h1>
-<%= form_for @user, html: {class: 'form-horizontal center'} do |f| %>
-  <div class = 'form-group row'>
-    <%= f.label :username, class: 'col-md-3' %>
-    <div class = 'col-md-9'>
-      <%= f.text_field :full_name, class: 'form-control' %>
+  <h1>Sign Up</h1>
+  <%= form_for @user, html: { class: 'form-horizontal center' } do |f| %>
+    <div class = 'form-group row'>
+      <%= f.label :username, class: 'col-md-3' %>
+      <div class = 'col-md-9'>
+        <%= f.text_field :full_name, class: 'form-control' %>
+      </div>
     </div>
-  </div>
-  <div class = 'form-group row'>
-    <%= f.label :email, class: 'col-md-3' %>
-    <div class = 'col-md-9'>
-      <%= f.email_field :email, class: 'form-control' %>
+    <div class = 'form-group row'>
+      <%= f.label :email, class: 'col-md-3' %>
+      <div class = 'col-md-9'>
+        <%= f.email_field :email, class: 'form-control' %>
+      </div>
     </div>
-  </div>
-  <div class = 'form-group row'>
-    <%= f.label :password, class: 'col-md-3' %>
-    <div class = 'col-md-9'>
-      <%= f.password_field :password, class: 'form-control' %>
+    <div class = 'form-group row'>
+      <%= f.label :password, class: 'col-md-3' %>
+      <div class = 'col-md-9'>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
     </div>
-  </div>
-  <div class = 'form-group row'>
-    <%= f.label :gender, class: 'col-md-3' %>
-    <div class = 'col-md-9'>
-      <%= f.radio_button :gender, "male", class: 'form-control', class: 'col-md-1' %>Male
-      <%= f.radio_button :gender, "female", class: 'form-control', class: 'col-md-1' %>Female
-      <%= f.radio_button :gender, "other", class: 'form-control', class: 'col-md-1' %>Other
+    <div class = 'form-group row'>
+      <%= f.label :gender, class: 'col-md-3' %>
+      <div class = 'col-md-9'>
+        <%= f.radio_button :gender, "male", class: 'form-control', class: 'col-md-1' %>Male
+        <%= f.radio_button :gender, "female", class: 'form-control', class: 'col-md-1' %>Female
+        <%= f.radio_button :gender, "other", class: 'form-control', class: 'col-md-1' %>Other
+      </div>
     </div>
-  </div>
-  <div class = 'form-group row'>
-    <%= f.label :mobile_no, class: 'col-md-3' %>
-    <div class = 'col-md-9'>
-      <%= f.telephone_field :mobile_no, placeholder: 'Length should be 10', class: 'form-control' %>
+    <div class = 'form-group row'>
+      <%= f.label :mobile_no, class: 'col-md-3' %>
+      <div class = 'col-md-9'>
+        <%= f.telephone_field :mobile_no, placeholder: 'Length should be 10', class: 'form-control' %>
+      </div>
     </div>
-  </div>
-  <div class = 'form-group row'>
-    <% if @user.image.attached? %>
-      <%= image_tag @user.image %>
-    <% end %>
-    <%= f.label :image, class: 'col-md-3' %>
-    <div class = 'col-md-9'>
-      <%= f.file_field :image, class: 'form-control' %>
+    <div class = 'form-group row'>
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image %>
+      <% end %>
+      <%= f.label :image, class: 'col-md-3' %>
+      <div class = 'col-md-9'>
+        <%= f.file_field :image, class: 'form-control' %>
+      </div>
     </div>
-  </div>
-  <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
-<% end %>
+    <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
+  <% end %>
 </div>
