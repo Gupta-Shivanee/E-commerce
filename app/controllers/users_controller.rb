@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update(user_update_params)
-      UserMailer.update_email(@user).deliver_now
+      UserJob.perform_later @user
       flash[:notice] = "profile updated"
       redirect_to user_path(@user.id)
     else
