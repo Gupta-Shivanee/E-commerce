@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  before_action :current_address
+  before_action :load_address, only: %i[edit update destroy]
 
   def index
     @address = current_user.addresses.all
@@ -21,21 +21,22 @@ class AddressesController < ApplicationController
   end
   
   def edit
-    @address = current_address
+    @address = load_address
   end
   
   def update
-    @address = current_address
-    if @address.update(address_update_params)
+    @address = load_address
+    if @address != nil && @address.update(address_update_params)
       flash[:notice] = "address updated!"
       redirect_to addresses_path
     else
+      flash[:notice] = "Address update unsuccessfull!"
       render :edit
     end
   end
   
   def destroy 
-    @address = current_address
+    @address = load_address
     @address.destroy
     flash[:success] = "address destroyed."
     redirect_to addresses_path
@@ -50,7 +51,7 @@ class AddressesController < ApplicationController
     params.require(:address).permit(:house_no, :street, :city, :state, :country, :pincode)
   end
   
-  def current_address
+  def load_address
     current_user.addresses.find_by_id(address_id_params[:id])
   end
   
