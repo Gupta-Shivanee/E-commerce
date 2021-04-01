@@ -3,7 +3,7 @@
 <%= "Email: #{current_user.email}" %>
 <% @orders.each do |order| %>
   
-  <p>cart Items: </p>
+  <p>Placed Items: </p>
   <ul>
     <% order.cart_items.each do |item| %>
       <li><%= item.quantity %> x <%= item.product.name %></li>
@@ -12,6 +12,7 @@
     <% @address.each do |address| %>
       <%= "#{address.house_no}, #{address.street}, #{address.city}, #{address.state}, #{address.country}, pincode- #{address.pincode}" %>
     <% end %>
+    <%= "Total #{order.total}" %>
   </ul>
   <hr>
 <% end %>

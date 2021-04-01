@@ -1,5 +1,9 @@
 class AddressesController < ApplicationController
 
+  def index
+    @address = current_user.addresses.all
+  end
+  
   def new
     @address = Address.new
   end
@@ -13,10 +17,6 @@ class AddressesController < ApplicationController
     else
       render :new
     end
-  end
-  
-  def show
-    @address = current_user.addresses.all
   end
   
   private
