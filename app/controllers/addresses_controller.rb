@@ -20,12 +20,9 @@ class AddressesController < ApplicationController
     end
   end
   
-  def edit
-    @address = load_address
-  end
+  def edit; end
   
   def update
-    @address = load_address
     if @address != nil && @address.update(address_update_params)
       flash[:notice] = "address updated!"
       redirect_to addresses_path
@@ -36,7 +33,6 @@ class AddressesController < ApplicationController
   end
   
   def destroy 
-    @address = load_address
     @address.destroy
     flash[:success] = "address destroyed."
     redirect_to addresses_path
@@ -52,7 +48,7 @@ class AddressesController < ApplicationController
   end
   
   def load_address
-    current_user.addresses.find_by_id(address_id_params[:id])
+    @address = current_user.addresses.find_by_id(address_id_params[:id])
   end
   
   def address_id_params
