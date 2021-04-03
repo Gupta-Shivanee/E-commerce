@@ -9,6 +9,6 @@
     <%= "pin-code #{address.pincode} " %>
   </div>
   <%= link_to "edit", edit_address_path(address) %>
-  <%= button_to "delete", address_path(address), method: :delete %>
+  <%= link_to "delete", address_path(address), method: :delete %>
   <hr>
 <% end %>
