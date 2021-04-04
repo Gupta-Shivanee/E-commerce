@@ -1,2 +1,11 @@
 <%= "Welcome #{current_user.full_name}" %>
-<%= render "shared/product", collection: @products %>
+
+<%= form_tag products_path, :method => 'get', :id => "products_search", remote: true do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <div id="products">
+    <%= render "shared/product", collection: @products %>
+  </div>
+<% end %>

@@ -8,7 +8,18 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "@fortawesome/fontawesome-free/js/all";
+import $ from 'jquery'
+window.jQuery = $
+window.$ = $
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+require('jquery')
+
+$(function() {
+$("#products_search input").keyup(function() {
+    $.get($("#products_search").attr("action"), $("#products_search").serialize(), null, "script");
+    return false;
+  });
+});
