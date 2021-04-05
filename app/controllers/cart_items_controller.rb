@@ -14,6 +14,7 @@ class CartItemsController < ApplicationController
       @cart_item.product = chosen_product
     end
     @cart_item.save
+    flash[:success] = "Product added to cart!"
     redirect_to products_path
   end
   
@@ -46,6 +47,6 @@ class CartItemsController < ApplicationController
   end
   
   def load_cart_item
-    @cart_item = CartItem.find_by_id(cart_item_id_params[:id])
+    @cart_item = @current_cart.cart_items.find_by_id(cart_item_id_params[:id])
   end
 end
