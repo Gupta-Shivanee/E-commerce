@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_072242) do
+ActiveRecord::Schema.define(version: 2021_03_25_073857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,21 @@ ActiveRecord::Schema.define(version: 2021_03_24_072242) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+<<<<<<< HEAD
+  create_table "addresses", force: :cascade do |t|
+    t.string "house_no"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.integer "pincode"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+=======
+>>>>>>> 508e8706d321a91d11be146e06ccded7f66479ac
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
