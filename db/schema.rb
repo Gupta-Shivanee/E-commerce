@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_03_25_073857) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-<<<<<<< HEAD
   create_table "addresses", force: :cascade do |t|
     t.string "house_no"
     t.string "street"
@@ -56,8 +55,6 @@ ActiveRecord::Schema.define(version: 2021_03_25_073857) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-=======
->>>>>>> 508e8706d321a91d11be146e06ccded7f66479ac
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
