@@ -4,6 +4,6 @@ class CartItem < ApplicationRecord
   has_one :order
   
   def total_price
-    self.quantity * self.product.price
+    quantity * product.price
   end
 end

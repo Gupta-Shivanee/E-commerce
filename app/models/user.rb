@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_one_attached :image, dependent: :destroy
   has_many :products, dependent: :destroy
   has_many :addresses, dependent: :destroy
-  has_many :orders, dependent: :destroy
+  has_one :cart
   
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true

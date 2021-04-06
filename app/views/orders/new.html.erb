@@ -18,17 +18,17 @@
   <div class = "mb-3">  
     <%= f.label :address %> 
     <% @address = current_user.addresses.all %>
-      <% @address.each do |address| %>
-        <div>
-          <%= f.check_box :address_id %>
-          <%= "Address:- #{address.house_no}, #{address.street}, #{address.city},#{address.state}, #{address.country}, pin-code #{address.pincode}" %>
-        </div>
+    <% @address.each do |address| %>
+      <div>
+        <%= f.radio_button :address_id , "#{address.id}" %>
+        <%= "#{address.house_no}, #{address.street}, #{address.city},#{address.state}, #{address.country}, pin-code #{address.pincode}" %>
+      </div>
     <% end %>
   </div>
   <div class = "mb-3">
     <%= f.label :Total %>
     <%= ":-  " %>
-    <%= f.text_field :total, value: @current_cart.sub_total %>
+    <%= f.text_field :total, value: @cart.sub_total %>
   </div>
   <div class = "mb-3">
     <%= f.submit %>
