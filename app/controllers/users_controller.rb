@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(signup_params)
     if @user.save
+      @cart = @user.create_cart
       session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else

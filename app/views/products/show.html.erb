@@ -16,3 +16,4 @@
     <%= image_tag image, height: 200, width: 200, class: "mt-2 ml-4" %>
   <% end %>
 <% end %>
+<%= button_to "Add #{@product.name} to cart", cart_items_path(@product) %>
