@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_24_072242) do
+ActiveRecord::Schema.define(version: 2021_04_05_203000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,46 @@ ActiveRecord::Schema.define(version: 2021_03_24_072242) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "house_no"
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.integer "pincode"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.decimal "price"
+    t.integer "product_id"
+    t.integer "cart_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "order_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_cart_items_on_user_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "status"
+    t.integer "user_id"
+    t.integer "address_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "total"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "price"
@@ -66,4 +106,6 @@ ActiveRecord::Schema.define(version: 2021_03_24_072242) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cart_items", "users"
+  add_foreign_key "carts", "users"
 end
