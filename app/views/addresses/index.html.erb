@@ -7,5 +7,8 @@
   </div>
   <div class = "mb-3">
     <%= "pin-code #{address.pincode} " %>
-  </div><hr>
+  </div>
+  <%= link_to "edit", edit_address_path(address) %>
+  <%= link_to "delete", address_path(address), method: :delete %>
+  <hr>
 <% end %>
