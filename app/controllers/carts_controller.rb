@@ -1,12 +1,12 @@
 class CartsController < ApplicationController
-  def show
-    @cart = @current_cart
+  before_action :find_cart, only: %i[index destroy]
+  
+  def index
+    @cart_items = @cart
   end
   
-  def destroy
-    @cart = @current_cart
-    @cart.destroy
-    session[:cart_id] = nil
-    redirect_to cart_path(@current_cart)
+  private
+  def find_cart
+    @cart = current_user.cart
   end
 end
