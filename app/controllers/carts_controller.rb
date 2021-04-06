@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :find_cart, only: %i[index destroy]
+  before_action :find_cart, only: %i[index]
   
   def index
     @cart_items = @cart

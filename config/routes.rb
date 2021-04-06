@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[new create destroy]
   resources :products, only: %i[index new create show]
   resources :addresses, only: %i[index new create edit update destroy]
-  resources :carts, only: %i[index update destroy]
+  resources :carts
   
   post 'cart_items/:id/add', to: "cart_items#add_quantity", as: "cart_item_add"
   post 'cart_items/:id/reduce', to: "cart_items#reduce_quantity", as: "cart_item_reduce"
