@@ -5,6 +5,8 @@ ruby '3.0.0'
 
 gem 'sidekiq'
 
+gem 'devise'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
 # Use postgresql as the database for Active Record
