@@ -1,7 +1,7 @@
-<%= render "shared/error_messages" %>
-<div class = containers>
-  <h1>Sign Up</h1>
-  <%= form_for @user, html: { class: 'form-horizontal center' } do |f| %>
+<h2>Sign up</h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class = containers>
     <div class = 'form-group row'>
       <%= f.label :username, class: 'col-md-3' %>
       <div class = 'col-md-9'>
@@ -11,13 +11,22 @@
     <div class = 'form-group row'>
       <%= f.label :email, class: 'col-md-3' %>
       <div class = 'col-md-9'>
-        <%= f.email_field :email, class: 'form-control' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
     </div>
     <div class = 'form-group row'>
       <%= f.label :password, class: 'col-md-3' %>
       <div class = 'col-md-9'>
-        <%= f.password_field :password, class: 'form-control' %>
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+    </div>
+    <div class = 'form-group row'>
+      <%= f.label :password_confirmation, class: 'col-md-3' %>
+      <div class = 'col-md-9'>      
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
     </div>
     <div class = 'form-group row'>
@@ -43,6 +52,10 @@
         <%= f.file_field :image, class: 'form-control' %>
       </div>
     </div>
-    <%= f.submit "Sign Up", class: 'btn btn-primary btn-sm' %>
-  <% end %>
-</div>
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
