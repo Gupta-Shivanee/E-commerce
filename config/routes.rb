@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'carts/show'
+  
   root to: "homes#welcome"
-  resources :users, only: %i[new create edit update show]
-  resources :sessions, only: %i[new create destroy]
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :users, only: %i[show]
+  #resources :sessions, only: %i[new create destroy]
   resources :products, only: %i[index new create show]
   resources :addresses, only: %i[index new create edit update destroy]
   resources :carts
