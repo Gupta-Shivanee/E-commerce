@@ -1,3 +1,6 @@
+<div class = "col-sm-1">
+  <%= link_to 'Back', user_path(current_user) %>
+</div>
 <%= "Welcome #{current_user.full_name}" %>
 
 <%= form_tag products_path, :method => 'get', :id => "products_search", remote: true do %>
