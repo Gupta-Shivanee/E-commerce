@@ -5,18 +5,23 @@ class CartItemsController < ApplicationController
   def create
     chosen_product = Product.find_by_id(params[:product_id])
     current_cart = @cart
-    if current_cart.products.include?(chosen_product)
-      @cart_item = current_cart.cart_items.find_by(product_id: chosen_product)
-      @cart_item.quantity += 1
+    if chosen_product.quantity > 0
+      if current_cart.products.include?(chosen_product)
+        @cart_item = current_cart.cart_items.find_by(product_id: chosen_product)
+        @cart_item.quantity += 1
+      else
+        @cart_item = CartItem.new
+        @cart_item.quantity = 1
+        @cart_item.cart = @cart
+        @cart_item.product = chosen_product
+      end
+      @cart_item.save
+      flash[:success] = "Product added to cart!"
+      redirect_to products_path
     else
-      @cart_item = CartItem.new
-      @cart_item.quantity = 1
-      @cart_item.cart = @cart
-      @cart_item.product = chosen_product
+      flash[:alert] = "OOP'S, THIS PRODUCT IS OUT OF STOCK!!"
+      redirect_to product_path(chosen_product)
     end
-    @cart_item.save
-    flash[:success] = "Product added to cart!"
-    redirect_to products_path
   end
   
   def add_quantity

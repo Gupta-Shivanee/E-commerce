@@ -11,11 +11,26 @@ class OrdersController < ApplicationController
   
   def create
     @order = Order.new(order_params)
+    flag = true
     @cart.cart_items.each do |item|
       @order.cart_items << item
       item.cart_id = nil
+      product = Product.find_by(id: item.product_id)
+      if product.quantity < item.quantity 
+        flag = false
+        flash[:notice] = "OOP'S, #{product.name} IS OUT OF STOCK!!"
+        break
+      end
     end
-    @order.save
+    if flag
+      @cart.cart_items.each do |item|
+        product = Product.find_by(id: item.product_id)
+        product.quantity -= item.quantity
+        product.save
+      end
+      @order.save
+      flash[:notice] = "Order PLaced"
+    end  
     redirect_to user_path(current_user)
   end
 
