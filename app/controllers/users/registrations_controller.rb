@@ -12,16 +12,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @cart = current_user.create_cart if user_signed_in?
+    if user_signed_in?
+      @cart = current_user.create_cart
+      UserMailer.welcome_email(@user).deliver_now
+    end
   end
 
   # GET /resource/edit
-  # def edit
+  #def edit
   #   super
   # end
 
   # PUT /resource
-  # def update
+  #def update
   #  super
   #end
 
@@ -39,7 +42,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+   protected
+   
+   def after_update_path_for(resource)
+     UserMailer.update_email(@user).deliver_now
+     user_path(resource.id)
+   end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
