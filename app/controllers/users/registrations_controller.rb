@@ -45,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
    protected
    
    def after_update_path_for(resource)
-     UserMailer.update_email(@user).deliver_now
+     UserJob.perform_later @user
      user_path(resource.id)
    end
 
