@@ -2,20 +2,21 @@ class OrdersController < ApplicationController
   before_action :find_cart, only: %i[new create index]
   
   def index
-    @orders = Order.where(user_id: current_user.id)
+    @orders = current_user.orders.all.includes(:cart_items)
   end
 
   def new
-    @order = Order.new
+    @order = current_user.orders.new
+    @addresses = current_user.addresses.all
   end
   
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.new(order_params)
     flag = true
     @cart.cart_items.each do |item|
       @order.cart_items << item
       item.cart_id = nil
-      product = Product.find_by(id: item.product_id)
+      product = @cart.products.find_by(id: item.product_id)
       if product.quantity < item.quantity 
         flag = false
         flash[:notice] = "OOP'S, #{product.name} IS OUT OF STOCK!!"
@@ -24,7 +25,7 @@ class OrdersController < ApplicationController
     end
     if flag
       @cart.cart_items.each do |item|
-        product = Product.find_by(id: item.product_id)
+        product = @cart.products.find_by(id: item.product_id)
         product.quantity -= item.quantity
         product.save
       end
@@ -39,7 +40,6 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:status, :user_id, :address_id, :total)
   end
   
-  private
   def find_cart
     @cart = current_user.cart
   end
