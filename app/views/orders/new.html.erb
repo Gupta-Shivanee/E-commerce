@@ -1,0 +1,35 @@
+<%= form_for(@order) do |f| %>
+  <div class = "mb-3">
+    <%= f.label :name %>
+    <%= current_user.full_name %>
+  </div>
+  <div class = "mb-3">  
+    <%= f.label :email %>
+    <%= current_user.email %>
+  </div>
+  <div class = "mb-3"> 
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>  
+  <div class = "mb-3">
+    <%= f.label :user_id %>
+    <%= f.text_field :user_id, value: current_user.id %>
+  </div>
+  <div class = "mb-3">  
+    <%= f.label :address %> 
+    <% @addresses.each do |address| %>
+      <div>
+        <%= f.radio_button :address_id , "#{address.id}" %>
+        <%= "#{address.house_no}, #{address.street}, #{address.city},#{address.state}, #{address.country}, pin-code #{address.pincode}" %>
+      </div>
+    <% end %>
+  </div>
+  <div class = "mb-3">
+    <%= f.label :Total %>
+    <%= ":-  " %>
+    <%= f.text_field :total, value: @cart.sub_total %>
+  </div>
+  <div class = "mb-3">
+    <%= f.submit %>
+  </div>
+<% end %>

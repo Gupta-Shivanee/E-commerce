@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
       render :new
     end
   end
-  
+ 
   def edit; end
   
   def update
@@ -42,7 +42,7 @@ class AddressesController < ApplicationController
   def address_params
     params.require(:address).permit(:user_id, :house_no, :street, :city, :state, :country, :pincode)
   end
-  
+
   def address_update_params
     params.require(:address).permit(:house_no, :street, :city, :state, :country, :pincode)
   end
