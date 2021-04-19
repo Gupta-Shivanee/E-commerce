@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   has_many_attached :image, dependent: :destroy
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :cart_items
   
   validates :name, :quantity, :description, presence: true
