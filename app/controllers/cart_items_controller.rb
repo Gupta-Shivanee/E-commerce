@@ -15,6 +15,7 @@ class CartItemsController < ApplicationController
       @cart_item.product = chosen_product
     end
     @cart_item.save
+    ActionCable.server.broadcast('notification_channel', 'Product Added to cart')
     flash[:success] = "Product added to cart!"
     redirect_to products_path
   end

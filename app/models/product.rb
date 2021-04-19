@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-  
   has_many_attached :image, dependent: :destroy
   belongs_to :user
   has_many :cart_items
